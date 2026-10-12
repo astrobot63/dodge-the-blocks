@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dodge the Blocks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SURVIVE. COLLECT. UPGRADE.</p>
+        <h1>Dodge the <span>Blocks</span></h1>
+      </div>
+      <div class="wallet">
+        <span>🪙</span>
+        <strong id="coinBank">0</strong>
+      </div>
+    </header>
+
+    <section class="stats">
+      <div class="stat"><span>Score</span><strong id="score">0</strong></div>
+      <div class="stat"><span>Best</span><strong id="best">0</strong></div>
+      <div class="stat"><span>Run coins</span><strong id="runCoins">0</strong></div>
+      <div class="stat"><span>Combo</span><strong id="combo">x1</strong></div>
+    </section>
+
+    <section class="game-layout">
+      <div class="game-column">
+        <div class="arena-wrap">
+          <div id="arena" class="arena theme-neon">
+            <div class="arena-grid"></div>
+            <div id="player" class="player skin-neon"></div>
+            <div id="entities"></div>
+            <div id="effects"></div>
+
+            <div id="overlay" class="overlay">
+              <div class="overlay-card">
+                <p class="eyebrow">YOUR NEXT CHALLENGE</p>
+                <h2 id="overlayTitle">Ready?</h2>
+                <p id="overlayText">Dodge the blocks. Collect the coins. Try not to become modern art.</p>
+                <button id="startButton" class="primary">Start game</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-buttons">
+          <button id="pauseButton" class="secondary" disabled>⏸ Pause</button>
+          <button id="restartButton" class="secondary">↻ Restart</button>
+          <label class="difficulty-label">
+            Difficulty
+            <select id="difficulty">
+              <option value="chill">Chill</option>
+              <option value="normal" selected>Normal</option>
+              <option value="chaos">Chaos</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="mobile-controls">
+          <button data-move="up" aria-label="Move up">▲</button>
+          <div class="horizontal-controls">
+            <button data-move="left" aria-label="Move left">◀</button>
+            <button data-move="down" aria-label="Move down">▼</button>
+            <button data-move="right" aria-label="Move right">▶</button>
+          </div>
+        </div>
+
+        <p class="hint">Move: WASD / arrow keys · Pause: P · Use perks: 1, 2, 3, 4</p>
+      </div>
+
+      <aside class="sidebar">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Power-ups</h2>
+            <span class="muted">Keys 1–4</span>
+          </div>
+          <div id="inventory" class="inventory"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Daily reward</h2>
+            <span>🎁</span>
+          </div>
+          <p class="muted">Come back for a little pile of coins.</p>
+          <button id="dailyButton" class="secondary full-width">Claim daily reward</button>
+          <p id="dailyStatus" class="tiny"></p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Mission</h2>
+            <span>🎯</span>
+          </div>
+          <p id="missionText">Loading mission...</p>
+          <div class="progress-track"><div id="missionProgress" class="progress-fill"></div></div>
+          <p id="missionStatus" class="tiny muted"></p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Achievements</h2>
+            <span>🏆</span>
+          </div>
+          <div id="achievements" class="achievements"></div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="lower-grid">
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Upgrade shop</h2>
+          <span>🛒</span>
+        </div>
+        <p class="muted">Spend your saved coins. Power-ups are single-use.</p>
+        <div id="shop" class="shop-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Customize</h2>
+          <span>🎨</span>
+        </div>
+        <label class="setting-row">
+          Player skin
+          <select id="skinSelect">
+            <option value="neon">Neon (free)</option>
+            <option value="sunset">Sunset (250 coins)</option>
+            <option value="ice">Ice (400 coins)</option>
+            <option value="gold">Gold (700 coins)</option>
+          </select>
+        </label>
+        <label class="setting-row">
+          Arena theme
+          <select id="themeSelect">
+            <option value="neon">Neon (free)</option>
+            <option value="forest">Forest (200 coins)</option>
+            <option value="ember">Ember (350 coins)</option>
+          </select>
+        </label>
+        <label class="setting-row">
+          Sound effects
+          <input id="soundToggle" type="checkbox" checked>
+        </label>
+        <p id="customizeStatus" class="tiny muted"></p>
+        <button id="resetProgressButton" class="danger full-width">Reset all saved progress</button>
+      </section>
+    </section>
+
+    <footer>
+      <p>Made by: Qusay Mohanad Abu-Nayla • 2026</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html> 
